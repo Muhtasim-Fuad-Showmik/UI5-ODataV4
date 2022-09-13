@@ -190,14 +190,31 @@ sap.ui.define([
 			var oDetailArea = this.byId("detailArea"),
 				oLayout = this.byId("defaultLayout"),
 				// get binding of selected item
-				oUserContext = oEvent.getParameters().listItem.getBindingContext();
+				oUserContext = oEvent.getParameters().listItem.getBindingContext(),
+				oOldContext = oDetailArea.getBindingContext(),
+				oSearchField = this.byId("searchField");
+
+			// remove keepAlive from old context
+			if (oOldContext) {
+				oOldContext.setKeepAlive(false);
+			}
 
 			// set binding
 			oDetailArea.setBindingContext(oUserContext);
+			// set keepAlive for new context and add a beforeDestroy function to the User Context
+			oUserContext.setKeepAlive(true, function () {
+				// hides detail area when context is destroyed
+				oLayout.setSize("100%");
+				oLayout.setResizable(false);
+				oDetailArea.setVisible(false);
+				oSearchField.setWidth("25%");
+			});
+
 			// resize view
 			oDetailArea.setVisible(true);
 			oLayout.setSize("60%");
 			oLayout.setResizable(true);
+			oSearchField.setWidth("40%");
 		},
 
 		_getText: function (sTextId, aArgs) {
