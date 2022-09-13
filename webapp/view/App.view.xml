@@ -8,6 +8,10 @@
 			<pages>
 				<Page title="{i18n>peoplePageTitle}">
 					<content>
+						<!--
+							Setting growingThreshold to 10 ensures that only 10 records are loaded at a time.
+							Setting 'growing' to true allows the loaded data to be expandable by clicking on the 'More' button.
+						 -->
 						<Table
 							id="peopleList"
 							growing="true"
@@ -15,6 +19,18 @@
 							items="{
 								path: '/People'
 							}">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<ToolbarSpacer/>
+										<Button
+											id="refreshUserButton"
+											icon="sap-icon://refresh"
+											tooltip="{i18n>refreshButtonText}"
+											press=".onRefresh" />
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
 							<columns>
 								<Column id="userNameColumn">
 									<Text text="{i18n>userNameLabelText}"/>
