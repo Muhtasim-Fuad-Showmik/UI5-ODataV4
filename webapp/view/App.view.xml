@@ -7,6 +7,15 @@
 		<App busy="{appView>/busy}" class="sapUiSizeCompact">
 			<pages>
 				<Page title="{i18n>peoplePageTitle}">
+					<headerContent>
+						<Button
+							id="resetChangesButton"
+							text="{i18n>resetChangesButtonText}"
+							enabled="{= !${appView>/hasUIChanges}}"
+							press="onResetDataSource"
+							type="Emphasized">
+						</Button>
+					</headerContent>
 					<content>
 						<!--
 							Setting growingThreshold to 10 ensures that only 10 records are loaded at a time.
