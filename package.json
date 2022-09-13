@@ -1,0 +1,15 @@
+{
+  "name": "sap.ui.core.tutorial.odatav4.01",
+  "version": "1.0.0",
+  "author": "SAP SE",
+  "description": "Code: OData V4 - Step 1 - Set Up the Initial App",
+  "scripts": {
+    "start": "ui5 serve",
+    "build": "ui5 build"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@ui5/cli": "^2.0.0"
+  }
+}
