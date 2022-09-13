@@ -11,23 +11,38 @@
 						<!--
 							Setting growingThreshold to 10 ensures that only 10 records are loaded at a time.
 							Setting 'growing' to true allows the loaded data to be expandable by clicking on the 'More' button.
+							Setting $count to true tells OData service to send the number of entitites ot the backend. So we get
+							the full number of entities (20) and the number of displayed entities (10) beneath the 'More' button.
 						 -->
 						<Table
 							id="peopleList"
 							growing="true"
 							growingThreshold="10"
 							items="{
-								path: '/People'
+								path: '/People',
+								parameters: {
+									$count: true
+								}
 							}">
 							<headerToolbar>
 								<OverflowToolbar>
 									<content>
 										<ToolbarSpacer/>
+										<SearchField
+											id="searchField"
+											width="25%"
+											placeholder="{i18n>searchFieldPlaceholder}"
+											search=".onSearch"/>
 										<Button
 											id="refreshUserButton"
 											icon="sap-icon://refresh"
 											tooltip="{i18n>refreshButtonText}"
 											press=".onRefresh" />
+										<Button
+											id="sortUsersButton"
+											icon="sap-icon://sort"
+											tooltip="{i18n>sortButtonText}"
+											press=".onSort"/>
 									</content>
 								</OverflowToolbar>
 							</headerToolbar>
