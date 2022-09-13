@@ -57,6 +57,18 @@ sap.ui.define([
 			});
 		},
 
+		onDelete: function () {
+			var oSelected = this.byId("peopleList").getSelectedItem();
+
+			if(oSelected) {
+				oSelected.getBindingContext().delete("$auto").then(function () {
+					MessageToast.show(this._getText("deletionSuccessMessage"));
+				}.bind(this), function(oError) {
+					MessageBox.error(oError.message);
+				});
+			}
+		},
+
 		onInputChange: function (oEvt) {
 			if (oEvt.getParameter("escPressed")) {
 				this._setUIChanges();
