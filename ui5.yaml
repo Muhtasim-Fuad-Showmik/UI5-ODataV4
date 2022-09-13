@@ -7,6 +7,7 @@ framework:
   version: "1.106.0"
   libraries:
     - name: sap.m
+    - name: sap.f
     - name: sap.ui.core
     - name: sap.ui.table
     - name: themelib_sap_belize
