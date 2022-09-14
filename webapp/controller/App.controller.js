@@ -201,6 +201,7 @@ sap.ui.define([
 
 			// set binding
 			oDetailArea.setBindingContext(oUserContext);
+			
 			// set keepAlive for new context and add a beforeDestroy function to the User Context
 			oUserContext.setKeepAlive(true, function () {
 				// hides detail area when context is destroyed
